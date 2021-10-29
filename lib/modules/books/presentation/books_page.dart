@@ -1,3 +1,4 @@
+import 'package:flutter_tts/flutter_tts.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:holy_bible/core/domain/entities/book_entity.dart';

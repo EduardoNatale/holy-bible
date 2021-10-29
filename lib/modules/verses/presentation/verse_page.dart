@@ -1,21 +1,24 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:holy_bible/modules/verses/presentation/verse_controller.dart';
 
-class VersePage extends StatelessWidget {
+class VersePage extends GetView<VerseController> {
   const VersePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final String title = Get.arguments[0];
-    final String chapter = Get.arguments[1];
-    final List<String> verses = Get.arguments[2];
-
     return Scaffold(
       appBar: AppBar(
-        title: Text("$title - $chapter"),
+        title: Text("${controller.title} - ${controller.chapter}"),
+        actions: [
+          IconButton(
+            onPressed: controller.onPlayTap,
+            icon: const Icon(Icons.play_lesson),
+          )
+        ],
       ),
       body: ListView.separated(
-        itemCount: verses.length,
+        itemCount: controller.verses.length,
         padding: EdgeInsets.fromLTRB(
           8,
           8,
@@ -35,7 +38,7 @@ class VersePage extends StatelessWidget {
                 ),
               ),
               TextSpan(
-                text: " ${verses[index]}",
+                text: " ${controller.verses[index]}",
                 style: TextStyle(
                   fontSize: 18,
                   color: Theme.of(context).colorScheme.onBackground,

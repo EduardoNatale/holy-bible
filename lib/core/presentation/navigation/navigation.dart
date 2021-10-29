@@ -5,6 +5,7 @@ import 'package:holy_bible/modules/books/presentation/books_page.dart';
 import 'package:holy_bible/modules/chapters/presentation/chapters_page.dart';
 import 'package:holy_bible/modules/splash/presentation/splash_binding.dart';
 import 'package:holy_bible/modules/splash/presentation/splash_page.dart';
+import 'package:holy_bible/modules/verses/presentation/verse_binding.dart';
 import 'package:holy_bible/modules/verses/presentation/verse_page.dart';
 
 class Navigation {
@@ -26,6 +27,7 @@ class Navigation {
     GetPage(
       name: Routes.verses,
       page: () => const VersePage(),
+      binding: VerseBinding(),
     ),
   ];
 }
