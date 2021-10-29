@@ -16,6 +16,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: "Holy Bible",
+      darkTheme: ThemeData.dark(),
+      themeMode: ThemeMode.dark,
       getPages: Navigation.routes,
       initialRoute: Routes.initialRoute,
       initialBinding: AppBinding(),

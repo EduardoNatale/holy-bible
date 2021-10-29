@@ -16,9 +16,11 @@ class ChaptersPage extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(8),
-        child: Wrap(
-          spacing: 8,
-          runSpacing: 8,
+        child: GridView.count(
+          crossAxisCount: 6,
+          mainAxisSpacing: 8,
+          crossAxisSpacing: 8,
+          shrinkWrap: true,
           children: book.chapters.asMap().entries.map<Widget>((entry) {
             return ClipRRect(
               borderRadius: BorderRadius.circular(4),
@@ -31,11 +33,14 @@ class ChaptersPage extends StatelessWidget {
                   ]);
                 },
                 child: Container(
-                  padding: const EdgeInsets.all(16),
-                  color: Colors.indigo[700],
+                  color: Theme.of(context).colorScheme.surface,
+                  alignment: Alignment.center,
                   child: Text(
                     "${entry.key + 1}",
-                    style: const TextStyle(color: Colors.white),
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Theme.of(context).colorScheme.onSurface,
+                    ),
                   ),
                 ),
               ),

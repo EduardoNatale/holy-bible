@@ -16,8 +16,13 @@ class VersePage extends StatelessWidget {
       ),
       body: ListView.separated(
         itemCount: verses.length,
-        padding: const EdgeInsets.all(8),
-        separatorBuilder: (_, __) => const SizedBox(height: 4),
+        padding: EdgeInsets.fromLTRB(
+          8,
+          8,
+          8,
+          8 + MediaQuery.of(context).padding.bottom,
+        ),
+        separatorBuilder: (_, __) => const SizedBox(height: 6),
         itemBuilder: (_, index) {
           return RichText(
             text: TextSpan(children: <TextSpan>[
@@ -26,14 +31,14 @@ class VersePage extends StatelessWidget {
                 style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 12,
-                  color: Colors.black,
+                  color: Colors.red,
                 ),
               ),
               TextSpan(
                 text: " ${verses[index]}",
-                style: const TextStyle(
+                style: TextStyle(
                   fontSize: 18,
-                  color: Colors.black,
+                  color: Theme.of(context).colorScheme.onBackground,
                 ),
               ),
             ]),

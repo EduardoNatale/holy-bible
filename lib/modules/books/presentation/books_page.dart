@@ -20,12 +20,32 @@ class BooksPage extends GetView<BooksController> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                Row(
+                  children: [
+                    const Expanded(
+                      child: Text(
+                        "Minha biblia",
+                        style: TextStyle(
+                          fontSize: 32,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    IconButton(
+                      onPressed: () {},
+                      icon: const Icon(Icons.format_size),
+                    )
+                  ],
+                ),
+                const SizedBox(height: 8),
                 _buildBooks(
+                  context,
                   books: controller.store.oldBooks,
                   title: "Velho testamento",
                 ),
                 const SizedBox(height: 16),
                 _buildBooks(
+                  context,
                   books: controller.store.newBooks,
                   title: "Novo testamento",
                 ),
@@ -37,16 +57,17 @@ class BooksPage extends GetView<BooksController> {
     );
   }
 
-  Widget _buildBooks({required List<BookEntity> books, required String title}) {
+  Widget _buildBooks(
+    BuildContext context, {
+    required List<BookEntity> books,
+    required String title,
+  }) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           title,
-          style: const TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 24,
-          ),
+          style: const TextStyle(fontSize: 24),
         ),
         const SizedBox(height: 8),
         Wrap(
@@ -59,10 +80,13 @@ class BooksPage extends GetView<BooksController> {
                 onTap: () => controller.onBookTap(book: book),
                 child: Container(
                   padding: const EdgeInsets.all(12),
-                  color: Colors.indigo[700],
+                  color: Theme.of(context).colorScheme.surface,
                   child: Text(
                     book.name,
-                    style: const TextStyle(color: Colors.white),
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Theme.of(context).colorScheme.onSurface,
+                    ),
                   ),
                 ),
               ),
