@@ -1,4 +1,3 @@
-import 'package:flutter_tts/flutter_tts.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:holy_bible/core/domain/entities/book_entity.dart';
@@ -10,51 +9,42 @@ class BooksPage extends GetView<BooksController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Obx(() {
-        if (controller.store.loading) {
-          return const Center(child: CircularProgressIndicator());
-        }
-
-        return SingleChildScrollView(
-          padding: const EdgeInsets.all(8),
-          child: SafeArea(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    const Expanded(
-                      child: Text(
-                        "Minha biblia",
-                        style: TextStyle(
-                          fontSize: 32,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(8),
+        child: SafeArea(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  Expanded(
+                    child: Text(
+                      "Minha bíblia",
+                      style: Theme.of(context).textTheme.headline4,
                     ),
-                    IconButton(
-                      onPressed: () {},
-                      icon: const Icon(Icons.format_size),
-                    )
-                  ],
-                ),
-                const SizedBox(height: 8),
-                _buildBooks(
-                  context,
-                  books: controller.store.oldBooks,
-                  title: "Velho testamento",
-                ),
-                const SizedBox(height: 16),
-                _buildBooks(
-                  context,
-                  books: controller.store.newBooks,
-                  title: "Novo testamento",
-                ),
-              ],
-            ),
+                  ),
+                  IconButton(
+                    onPressed: controller.changeAppFontSize,
+                    icon: const Icon(Icons.format_size),
+                  )
+                ],
+              ),
+              const SizedBox(height: 8),
+              _buildBooks(
+                context,
+                books: controller.store.oldBooks,
+                title: "Velho testamento",
+              ),
+              const SizedBox(height: 16),
+              _buildBooks(
+                context,
+                books: controller.store.newBooks,
+                title: "Novo testamento",
+              ),
+            ],
           ),
-        );
-      }),
+        ),
+      ),
     );
   }
 
@@ -68,7 +58,7 @@ class BooksPage extends GetView<BooksController> {
       children: [
         Text(
           title,
-          style: const TextStyle(fontSize: 24),
+          style: Theme.of(context).textTheme.headline5,
         ),
         const SizedBox(height: 8),
         Wrap(
@@ -84,10 +74,7 @@ class BooksPage extends GetView<BooksController> {
                   color: Theme.of(context).colorScheme.surface,
                   child: Text(
                     book.name,
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Theme.of(context).colorScheme.onSurface,
-                    ),
+                    style: Theme.of(context).textTheme.bodyText2,
                   ),
                 ),
               ),

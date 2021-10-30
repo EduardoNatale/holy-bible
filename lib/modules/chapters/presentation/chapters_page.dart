@@ -4,12 +4,12 @@ import 'package:holy_bible/core/domain/entities/book_entity.dart';
 import 'package:holy_bible/core/presentation/navigation/routes.dart';
 
 class ChaptersPage extends StatelessWidget {
-  const ChaptersPage({Key? key}) : super(key: key);
+  ChaptersPage({Key? key}) : super(key: key);
+
+  final BookEntity book = Get.arguments;
 
   @override
   Widget build(BuildContext context) {
-    final BookEntity book = Get.arguments;
-
     return Scaffold(
       appBar: AppBar(
         title: Text(book.name),
@@ -37,10 +37,7 @@ class ChaptersPage extends StatelessWidget {
                   alignment: Alignment.center,
                   child: Text(
                     "${entry.key + 1}",
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Theme.of(context).colorScheme.onSurface,
-                    ),
+                    style: Theme.of(context).textTheme.bodyText1,
                   ),
                 ),
               ),

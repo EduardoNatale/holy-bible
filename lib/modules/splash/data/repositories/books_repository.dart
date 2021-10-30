@@ -1,6 +1,6 @@
 import 'package:holy_bible/core/domain/entities/book_entity.dart';
 import 'package:holy_bible/core/utils/custom_exception.dart';
-import 'package:holy_bible/modules/books/infra/datasources/books_remote_datasource.dart';
+import 'package:holy_bible/modules/splash/infra/datasources/books_remote_datasource.dart';
 
 class BooksRepository {
   final BooksRemoteDatasource booksRemoteDatasource;

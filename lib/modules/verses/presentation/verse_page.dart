@@ -25,24 +25,21 @@ class VersePage extends GetView<VerseController> {
           8,
           8 + MediaQuery.of(context).padding.bottom,
         ),
-        separatorBuilder: (_, __) => const SizedBox(height: 6),
+        separatorBuilder: (_, __) => const SizedBox(height: 12),
         itemBuilder: (_, index) {
-          return RichText(
-            text: TextSpan(children: <TextSpan>[
+          return SelectableText.rich(
+            TextSpan(children: <TextSpan>[
               TextSpan(
                 text: "${index + 1}.",
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 12,
-                  color: Colors.red,
-                ),
+                style: Theme.of(context).textTheme.caption!.copyWith(
+                      color: Colors.red,
+                    ),
               ),
               TextSpan(
                 text: " ${controller.verses[index]}",
-                style: TextStyle(
-                  fontSize: 18,
-                  color: Theme.of(context).colorScheme.onBackground,
-                ),
+                style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                      fontWeight: FontWeight.normal,
+                    ),
               ),
             ]),
           );

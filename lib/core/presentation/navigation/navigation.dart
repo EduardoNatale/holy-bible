@@ -22,7 +22,7 @@ class Navigation {
     ),
     GetPage(
       name: Routes.chapters,
-      page: () => const ChaptersPage(),
+      page: () => ChaptersPage(),
     ),
     GetPage(
       name: Routes.verses,
