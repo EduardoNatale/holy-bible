@@ -22,7 +22,7 @@ class BookEntity {
   factory BookEntity.fromMap(Map<String, dynamic> map) {
     return BookEntity(
       id: map['id'],
-      name: map['name'],
+      name: map['name'] ?? map['livro'],
       chapters: map['capitulos']
           .map<List<String>>((chapter) => List<String>.from(chapter))
           .toList(),

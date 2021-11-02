@@ -8,7 +8,7 @@ class BooksRemoteDatasource {
 
   Future<Map<String, dynamic>> getBooks() async {
     try {
-      final response = await dio.get("/bible");
+      final response = await dio.get("/arc");
 
       return Map<String, dynamic>.from(response.data);
     } catch (error) {
